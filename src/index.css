@@ -16,24 +16,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 210 100% 50%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 270 75% 59%;
+    --primary-foreground: 270 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 270 40% 96.1%;
+    --secondary-foreground: 270 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 270 40% 96.1%;
+    --muted-foreground: 270 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 20 100% 55%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 270 84% 40%;
 
     --radius: 0.75rem;
 
@@ -57,8 +57,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 270 40% 70%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -66,8 +66,8 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 20 100% 55%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -106,12 +106,12 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-blue-dark hover:bg-blue text-white font-medium py-3 px-6 rounded-lg transition-all 
+    @apply bg-lila-dark hover:bg-lila text-white font-medium py-3 px-6 rounded-lg transition-all 
     shadow-md hover:shadow-lg hover:translate-y-[-2px] active:translate-y-[0px] active:shadow-md duration-300;
   }
 
   .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-blue-dark border border-blue-dark font-medium py-3 px-6 rounded-lg transition-all
+    @apply bg-white hover:bg-gray-50 text-lila-dark border border-lila-dark font-medium py-3 px-6 rounded-lg transition-all
     shadow-sm hover:shadow-md hover:translate-y-[-2px] active:translate-y-[0px] active:shadow-sm duration-300;
   }
 
@@ -141,16 +141,16 @@
   }
 
   .feature-icon {
-    @apply w-14 h-14 p-3 rounded-full bg-pastel-blue text-blue-dark flex items-center justify-center mb-4;
+    @apply w-14 h-14 p-3 rounded-full bg-pastel-lila text-lila-dark flex items-center justify-center mb-4;
   }
 
   .timeline-item {
-    @apply relative pl-8 pb-10 border-l border-blue last:border-transparent;
+    @apply relative pl-8 pb-10 border-l border-lila last:border-transparent;
   }
 
   .timeline-item::before {
     content: '';
-    @apply absolute w-4 h-4 rounded-full bg-blue-dark border-4 border-pastel-blue left-[-10px] top-0;
+    @apply absolute w-4 h-4 rounded-full bg-lila-dark border-4 border-pastel-lila left-[-10px] top-0;
   }
   
   .contact-button {

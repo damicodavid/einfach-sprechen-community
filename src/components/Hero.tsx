@@ -7,8 +7,8 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-pastel-blue rounded-full filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pastel-purple rounded-full filter blur-3xl opacity-20 translate-y-1/3 -translate-x-1/4"></div>
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-pastel-lila rounded-full filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/4"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pastel-orange rounded-full filter blur-3xl opacity-20 translate-y-1/3 -translate-x-1/4"></div>
       </div>
       
       <div className="container">
@@ -19,11 +19,11 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="text-center md:text-left"
           >
-            <div className="inline-block px-3 py-1 mb-6 rounded-full bg-pastel-blue text-blue-dark font-medium text-sm">
+            <div className="inline-block px-3 py-1 mb-6 rounded-full bg-pastel-lila text-lila-dark font-medium text-sm">
               Deutsch lernen mit Community
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 tracking-tight">
-              Einfach <span className="text-blue-dark">Sprechen</span>
+              Einfach <span className="text-orange">Sprechen</span>
             </h1>
             <h2 className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
               Eine Community von Deutschlernenden und Sprachklubs mit einer Muttersprachlerin
@@ -58,9 +58,9 @@ const Hero = () => {
             </div>
             
             {/* Decorative elements */}
-            <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 w-12 h-12 bg-pastel-green rounded-lg rotate-45 animate-float"></div>
-            <div className="absolute -bottom-6 left-1/4 transform w-16 h-16 bg-pastel-peach rounded-lg rotate-12 animate-float"></div>
-            <div className="absolute top-0 left-0 transform -translate-x-1/4 -translate-y-1/4 w-24 h-24 bg-pastel-purple rounded-full opacity-60"></div>
+            <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 w-12 h-12 bg-pastel-orange rounded-lg rotate-45 animate-float"></div>
+            <div className="absolute -bottom-6 left-1/4 transform w-16 h-16 bg-pastel-lila rounded-lg rotate-12 animate-float"></div>
+            <div className="absolute top-0 left-0 transform -translate-x-1/4 -translate-y-1/4 w-24 h-24 bg-orange-light/50 rounded-full opacity-60"></div>
           </motion.div>
         </div>
         
@@ -69,7 +69,7 @@ const Hero = () => {
         </div>
         
         <div className="mt-16 mx-auto max-w-2xl text-center p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm">
-          <h3 className="font-medium text-xl mb-3 text-blue-dark">Warum alles auf Deutsch?</h3>
+          <h3 className="font-medium text-xl mb-3 text-lila-dark">Warum alles auf Deutsch?</h3>
           <p className="text-gray-600">
             Unsere Community ist speziell dafür konzipiert, dir zu helfen, dich vollständig in die deutsche Sprache einzutauchen. 
             Alle Inhalte und Interaktionen finden auf Deutsch statt, damit du schneller Fortschritte machst und dein Sprachgefühl entwickelst.

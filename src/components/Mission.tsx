@@ -23,7 +23,7 @@ const Mission = () => {
   };
 
   return (
-    <section id="mission" className="section bg-gradient-to-b from-white to-pastel-blue/30">
+    <section id="mission" className="section bg-gradient-to-b from-white to-pastel-lila/30">
       <div className="container">
         <motion.div
           initial="hidden"
@@ -42,7 +42,7 @@ const Mission = () => {
             <blockquote className="text-xl md:text-2xl font-heading italic text-gray-700 mb-4">
               „Wir möchten eine unterstützende Community von Gleichgesinnten und einen sicheren Raum für dich schaffen, um dein Deutsch zu üben und zu verbessern."
             </blockquote>
-            <div className="w-16 h-1 bg-blue mx-auto"></div>
+            <div className="w-16 h-1 bg-orange mx-auto"></div>
           </motion.div>
         </motion.div>
 

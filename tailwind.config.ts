@@ -63,12 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				blue: {
-					light: '#E1F5FE',
-					DEFAULT: '#4FC3F7',
-					dark: '#0288D1'
+				lila: {
+					light: '#d6bcfa',
+					DEFAULT: '#9b87f5',
+					dark: '#7E69AB'
+				},
+				orange: {
+					light: '#FEC6A1',
+					DEFAULT: '#F97316',
+					dark: '#C2410C'
 				},
 				pastel: {
+					lila: '#E5DEFF',
+					orange: '#FDE1D3',
 					blue: '#D3E4FD',
 					purple: '#E5DEFF',
 					pink: '#FFDEE2',

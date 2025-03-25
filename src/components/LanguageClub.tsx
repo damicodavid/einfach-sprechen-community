@@ -42,10 +42,10 @@ const LanguageClub = () => {
   };
 
   return (
-    <section id="club" className="section bg-pastel-blue/30 relative overflow-hidden">
+    <section id="club" className="section bg-pastel-lila/30 relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-light to-blue opacity-20 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-pastel-purple to-pastel-blue opacity-30 rounded-full transform -translate-x-1/3 translate-y-1/3"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-light to-orange opacity-20 rounded-full transform translate-x-1/3 -translate-y-1/3"></div>
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-lila to-lila-light opacity-30 rounded-full transform -translate-x-1/3 translate-y-1/3"></div>
       
       <div className="container relative z-10">
         <motion.div
@@ -76,8 +76,8 @@ const LanguageClub = () => {
                   className="w-full h-auto"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue/10 rounded-full"></div>
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-pastel-purple/30 rounded-full"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-orange/10 rounded-full"></div>
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-lila/30 rounded-full"></div>
             </div>
           </motion.div>
 
@@ -88,7 +88,7 @@ const LanguageClub = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             <div className="bg-white rounded-xl shadow-md p-6 md:p-8">
-              <div className="inline-block p-3 rounded-full bg-pastel-blue text-blue-dark mb-6">
+              <div className="inline-block p-3 rounded-full bg-pastel-lila text-lila-dark mb-6">
                 <Video size={24} />
               </div>
               
@@ -102,11 +102,11 @@ const LanguageClub = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <div className="flex items-center text-gray-700">
-                  <Calendar size={20} className="text-blue-dark mr-2" />
+                  <Calendar size={20} className="text-orange mr-2" />
                   <span>Jeden Mittwoch</span>
                 </div>
                 <div className="flex items-center text-gray-700">
-                  <Clock size={20} className="text-blue-dark mr-2" />
+                  <Clock size={20} className="text-orange mr-2" />
                   <span>19:00 - 20:30 Uhr</span>
                 </div>
               </div>
@@ -120,8 +120,8 @@ const LanguageClub = () => {
                     variants={itemVariants}
                     className="flex"
                   >
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-blue flex items-center justify-center mr-3 mt-1">
-                      <div className="w-2 h-2 rounded-full bg-blue-dark"></div>
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-pastel-lila flex items-center justify-center mr-3 mt-1">
+                      <div className="w-2 h-2 rounded-full bg-lila-dark"></div>
                     </div>
                     <div>
                       <h5 className="font-medium">{activity.title}</h5>
@@ -135,7 +135,7 @@ const LanguageClub = () => {
                 href="https://zoom.us/j/123456789" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-blue hover:bg-blue-dark text-white py-3 px-6 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md"
+                className="flex items-center justify-center gap-2 bg-orange hover:bg-orange-dark text-white py-3 px-6 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 <ExternalLink size={20} />
                 <span>Zum Zoom-Meeting beitreten</span>

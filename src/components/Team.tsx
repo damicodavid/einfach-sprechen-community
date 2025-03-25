@@ -22,7 +22,7 @@ const Team = () => {
   };
 
   return (
-    <section id="team" className="section bg-pastel-blue/20">
+    <section id="team" className="section bg-gradient-to-b from-pastel-lila/40 to-white">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ const Team = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-lila-dark/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                 <div className="p-6 text-white">
                   <p className="text-lg font-medium">Kontakt aufnehmen</p>
                 </div>
@@ -61,7 +61,7 @@ const Team = () => {
             </div>
             <div className="text-center">
               <h3 className="text-2xl font-heading font-semibold mb-2">Aliona</h3>
-              <p className="text-blue-dark font-medium mb-4">Gründerin & Sprachlehrerin</p>
+              <p className="text-orange font-medium mb-4">Gründerin & Sprachlehrerin</p>
               <p className="text-gray-600">
                 Bildungswissenschaftlerin mit jahrelanger Erfahrung im Sprachunterricht. 
                 Aliona hat die Community mit dem Ziel gegründet, einen effektiven und 
@@ -79,7 +79,7 @@ const Team = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-lila-dark/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                 <div className="p-6 text-white">
                   <p className="text-lg font-medium">Mehr erfahren</p>
                 </div>
@@ -87,7 +87,7 @@ const Team = () => {
             </div>
             <div className="text-center">
               <h3 className="text-2xl font-heading font-semibold mb-2">Lilia</h3>
-              <p className="text-blue-dark font-medium mb-4">Native Speaker & Dolmetscherin</p>
+              <p className="text-orange font-medium mb-4">Native Speaker & Dolmetscherin</p>
               <p className="text-gray-600">
                 Als deutsche Muttersprachlerin und erfahrene Dolmetscherin unterstützt Lilia 
                 die Community mit ihrem Sprachwissen. Sie hilft bei Korrekturen und moderiert 
