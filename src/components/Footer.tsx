@@ -1,4 +1,3 @@
-
 import { Heart, Send, MessageSquare, Instagram } from 'lucide-react';
 
 const Footer = () => {
@@ -50,7 +49,7 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>
+          <div id="contact">
             <h3 className="text-lg font-semibold mb-4">Kontakt</h3>
             <p className="text-gray-600 mb-2">
               Hast du Fragen zur Community?

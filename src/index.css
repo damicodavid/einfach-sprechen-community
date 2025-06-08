@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -185,5 +184,15 @@
     100% {
       opacity: 1;
     }
+  }
+
+  .promo-banner {
+    position: fixed;
+    top: 70px; /* Adjust if your Header is taller/shorter */
+    right: 20px;
+    z-index: 1000;
+    background: transparent;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
 }

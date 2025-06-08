@@ -71,7 +71,7 @@ const LanguageClub = () => {
             <div className="relative">
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <img 
-                  src="/images/language-club.jpg" 
+                  src="/images/language-club.png" 
                   alt="Deutscher Sprachklub" 
                   className="w-full h-auto"
                 />

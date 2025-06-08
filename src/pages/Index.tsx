@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -10,6 +9,7 @@ import LanguageClub from '@/components/LanguageClub';
 import Values from '@/components/Values';
 import Pricing from '@/components/Pricing';
 import Footer from '@/components/Footer';
+import PromoBanner from '@/components/PromoBanner';
 
 const Index = () => {
   useEffect(() => {
@@ -48,6 +48,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      <PromoBanner />
       <main>
         <Hero />
         <Mission />

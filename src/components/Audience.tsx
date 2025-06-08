@@ -1,4 +1,3 @@
-
 import { CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -69,15 +68,33 @@ const Audience = () => {
             viewport={{ once: true, amount: 0.2 }}
             className="grid md:grid-cols-2 gap-x-12 gap-y-8"
           >
-            {targetAudience.map((item) => (
+            {targetAudience.map((item, idx) => (
               <motion.div 
                 key={item.id}
                 variants={itemVariants}
                 className="flex bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+                initial={{ '--tick-color': '#0f172a' }}
+                whileInView={{ '--tick-color': '#22c55e' }}
+                viewport={{ once: true, amount: 0.5 }}
+                style={{ '--tick-color': '#0f172a' } as React.CSSProperties}
               >
-                <div className="flex-shrink-0 text-blue-dark mr-4">
-                  <CheckCircle size={24} className="mt-1" />
-                </div>
+                <motion.div
+                  initial={{ scale: 0.6 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ 
+                    duration: 2, // slower pop
+                    delay: 0.3 + idx * 0.35, // more delay and stagger
+                    type: "spring", 
+                    bounce: 0.5 
+                  }}
+                  className="flex-shrink-0 mr-4"
+                >
+                  <CheckCircle
+                    size={36}
+                    className="mt-1 transition-colors duration-500"
+                    style={{ color: 'var(--tick-color)' }}
+                  />
+                </motion.div>
                 <div>
                   <h3 className="text-lg font-semibold mb-2">{item.text}</h3>
                   <p className="text-gray-600">{item.description}</p>
@@ -98,7 +115,17 @@ const Audience = () => {
           <p className="mb-6 text-gray-600">
             Kontaktiere uns für ein unverbindliches Gespräch, in dem wir deine Fragen beantworten und gemeinsam herausfinden können, ob unsere Community zu deinen Lernzielen passt.
           </p>
-          <button className="btn-primary mx-auto">Unverbindlich anfragen</button>
+          <button
+            className="btn-primary mx-auto"
+            onClick={() => {
+              const contact = document.getElementById("contact");
+              if (contact) {
+                contact.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+            Unverbindlich anfragen
+          </button>
         </motion.div>
       </div>
     </section>
