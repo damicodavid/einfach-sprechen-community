@@ -3,14 +3,17 @@ import ContactButtons from './ContactButtons';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-60 pb-16 overflow-hidden" style={{ marginTop: "-20%" }}>
+    <section
+      className="relative min-h-screen flex items-center pt-48 pb-0 overflow-hidden"
+      style={{ marginTop: "-20%" }}
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-pastel-lila rounded-full filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/4"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pastel-orange rounded-full filter blur-3xl opacity-20 translate-y-1/3 -translate-x-1/4"></div>
       </div>
       
-      <div className="container">
+      <div className="container" style={{ marginBottom: '-3%' }}>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -90,14 +93,18 @@ const Hero = () => {
         <div className="md:hidden mt-12">
           <ContactButtons className="justify-center" />
         </div>
-        
-        <div className="mt-16 mx-auto max-w-2xl text-center p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm">
-          <h3 className="font-medium text-xl mb-3 text-lila-dark">Warum alles auf Deutsch?</h3>
-          <p className="text-gray-600">
-            Unsere Community ist speziell dafür konzipiert, dir zu helfen, dich vollständig in die deutsche Sprache einzutauchen. 
-            Alle Inhalte und Interaktionen finden auf Deutsch statt, damit du schneller Fortschritte machst und dein Sprachgefühl entwickelst.
-          </p>
-        </div>
+      </div>
+      {/* Pulsing down arrow at the bottom */}
+      <div className="absolute left-1/2 bottom-6 transform -translate-x-1/2 z-20">
+        <svg
+          className="w-12 h-12 text-orange-400 animate-bounce" // 50% bigger than w-8 h-8
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
       </div>
     </section>
   );

@@ -51,8 +51,9 @@ const Index = () => {
       <PromoBanner />
       <main>
         <Hero />
-        <Mission />
         <Audience />
+        <Mission />
+        
         <Team />
         <Process />
         <LanguageClub />
