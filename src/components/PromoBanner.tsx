@@ -1,7 +1,9 @@
-import React from "react";
-import { Timer } from "lucide-react";
+import React, { useState } from "react";
+import { Timer, X } from "lucide-react";
 
 const PromoBanner = () => {
+  const [visible, setVisible] = useState(true);
+
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const contact = document.getElementById("contact");
@@ -10,13 +12,27 @@ const PromoBanner = () => {
     }
   };
 
+  if (!visible) return null;
+
   return (
     <div
-      className="fixed top-20 right-4 md:right-8 w-[300px] z-40 transition-transform duration-300 ease-in-out hover:scale-105"
-      data-aos="zoom-in"
-      data-aos-delay="800"
+      className={`
+        fixed z-40 transition-transform duration-300 ease-in-out hover:scale-105
+        w-[90vw] max-w-xs
+        bottom-4 left-1/2 -translate-x-1/2
+        md:top-16 md:right-8 md:left-auto md:bottom-auto md:translate-x-0
+      `}
+      style={{ fontSize: "90%" }} // 30% smaller
     >
-      <div className="bg-gradient-to-br from-orange-400 to-orange-500 p-1 rounded-xl shadow-xl">
+      <div className="bg-gradient-to-br from-orange-400 to-orange-500 p-1 rounded-xl shadow-xl relative">
+        {/* Close button */}
+        <button
+          className="absolute top-1 right-1 p-1 rounded-full hover:bg-orange-200 transition"
+          onClick={() => setVisible(false)}
+          aria-label="Banner schließen"
+        >
+          <X className="w-4 h-4 text-orange-700" />
+        </button>
         <div className="bg-white dark:bg-gray-900 rounded-xl px-4 py-2 flex flex-col h-full">
           <div className="flex items-center gap-2 mb-1">
             <Timer className="w-5 h-5 text-orange-500" />

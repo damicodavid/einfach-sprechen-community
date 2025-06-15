@@ -114,7 +114,7 @@ const Audience = () => {
                 viewport={{ once: true, amount: 0.3 }}
                 className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg transition-colors duration-200 inline-block text-center"
               >
-                Jetzt auf Deutsch loslegen! 
+                Jetzt beitreten! 
               </motion.a>
               {/* Right Down Arrow */}
               <motion.svg
