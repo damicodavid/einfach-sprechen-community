@@ -72,13 +72,61 @@ const Pricing = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="text-center mb-14"
       >
-        <h2 className="section-title">Preise & Mitgliedschaft</h2>
-        <p className="section-subtitle">
+        <h2 className="section-title mb-14 text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
+          Preise & Mitgliedschaft
+        </h2>
+        <p className="section-subtitle mb-10 text-xl md:text-2xl text-gray-600 font-medium">
           Lerne regelmäßig und entspannt – du bestimmst die Dauer.<br />
-          Alle Pakete enthalten dieselben Inhalte. Je länger du bleibst, desto günstiger wird es für dich.
+          <span className="text-gray-600 font-normal">
+            Alle Pakete enthalten dieselben Inhalte. Je länger du bleibst, desto günstiger wird es für dich.
+          </span>
         </p>
+        <div className="max-w-2xl mx-auto text-left bg-white/90 rounded-2xl p-10 mt-10 shadow-lg border border-gray-100">
+          <div className="flex items-center mb-6 gap-3">
+      
+        <span className="font-bold text-2xl text-gray-900">Was ist enthalten?</span>
+          </div>
+          <ul className="grid gap-5 text-gray-800 text-base md:text-lg">
+        <li className="flex items-start gap-3">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
+            <Check className="w-5 h-5 text-orange-500" />
+          </span>
+          Zugang zur Telegram-Gruppe mit täglichen Lernimpulsen
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
+            <Check className="w-5 h-5 text-orange-500" />
+          </span>
+          1x wöchentlich: Sprechklub mit Muttersprachler:in
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
+            <Check className="w-5 h-5 text-orange-500" />
+          </span>
+          Kommunikative Aufgaben (Text, Audio, Video)
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
+            <Check className="w-5 h-5 text-orange-500" />
+          </span>
+          Möglichkeit, jederzeit Fragen an eine:n Native Speaker zu stellen
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
+            <Check className="w-5 h-5 text-orange-500" />
+          </span>
+          Wöchentliches Quizlet-Set mit Vokabeln zum Thema
+        </li>
+        <li className="flex items-start gap-3">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-100 mt-1">
+            <Check className="w-5 h-5 text-orange-500" />
+          </span>
+          Zugriff auf Inhalte aus den Vorwochen
+        </li>
+          </ul>
+        </div>
       </motion.div>
 
       {/* Probewoche in first line */}
@@ -108,12 +156,7 @@ const Pricing = () => (
               </div>
               <p className="text-gray-600 mb-6">{plan.description}</p>
               <ul className="space-y-3 mb-6">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <Check size={18} className="text-orange-400 mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-gray-600">{feature}</span>
-                  </li>
-                ))}
+                {/* Features removed to avoid repetition with the section above */}
               </ul>
               <button className="w-full py-2 px-4 rounded-lg transition-colors bg-orange-500 hover:bg-orange-600 text-white">
                 Auswählen
