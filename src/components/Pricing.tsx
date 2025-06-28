@@ -1,6 +1,7 @@
-import { Check } from 'lucide-react';
+import { Check, ArrowRight, ArrowLeft, MousePointerClick } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactButtons from './ContactButtons';
+import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 
 const plans = [
   {
@@ -20,7 +21,7 @@ const plans = [
   },
   {
     name: "Startklar",
-    duration: "1–3 Wochen",
+    duration: "1–4 Wochen",
     price: "15",
     description: "Alle Inhalte, flexibel für den Einstieg",
     features: [
@@ -31,7 +32,7 @@ const plans = [
   },
   {
     name: "Dranbleiben",
-    duration: "4–7 Wochen",
+    duration: "5–11 Wochen",
     price: "13",
     description: "Für alle, die dranbleiben wollen",
     features: [
@@ -42,20 +43,9 @@ const plans = [
   },
   {
     name: "Sprachflow",
-    duration: "8–11 Wochen",
-    price: "12",
-    description: "Für kontinuierlichen Fortschritt",
-    features: [
-      "Alle Inhalte & Vorteile enthalten",
-      "Noch günstiger pro Woche"
-    ],
-    highlight: false
-  },
-  {
-    name: "Sprachexpert:in",
     duration: "ab 12 Wochen",
     price: "11",
-    description: "Werde Sprachexpert:in und spare am meisten",
+    description: "Werde Sprachflow und spare am meisten",
     features: [
       "Alle Inhalte & Vorteile enthalten",
       "Bester Preis pro Woche"
@@ -165,8 +155,71 @@ const Pricing = () => (
           </motion.div>
         ))}
       </div>
-      {/* Other plans in second line */}
-      <div className="flex flex-col md:flex-row gap-6 w-full mb-16 overflow-x-auto justify-center min-h-[420px]">
+      {/* Other plans as carousel on mobile, flex row on desktop */}
+      {/* Mobile carousel */}
+      <div className="block md:hidden w-full mb-16">
+        {/* Swipe hint icons */}
+        <div className="flex justify-center items-center gap-2 mb-2 opacity-80 select-none">
+          <ArrowLeft className="w-5 h-5 text-orange-400 animate-bounce-left" />
+          <span className="text-xs text-gray-500">Wische für mehr</span>
+          <ArrowRight className="w-5 h-5 text-orange-400 animate-bounce-right" />
+        </div>
+        <Carousel>
+          <CarouselContent>
+            {plans.slice(1).map((plan, index) => {
+              // Icons for savings level (from 1 to 4)
+              const savingsIcons = [
+                <svg key="1" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+                <svg key="2" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+                <svg key="3" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /></svg>,
+                <svg key="4" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" /></svg>
+              ];
+              const icon = savingsIcons[index % savingsIcons.length];
+              let saveUpTo = 0;
+              if (plan.name === "Dranbleiben") saveUpTo = 22;
+              if (plan.name === "Sprachflow") saveUpTo = 48;
+              return (
+                <CarouselItem key={plan.name} className={`!basis-[80vw] max-w-[340px] ${index === 0 ? 'ml-4' : ''} mr-6`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className={`relative flex flex-col items-center bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 flex-1 min-w-[220px] max-w-full mx-2 p-0 z-10 pt-10 group`}
+                    style={{ boxSizing: 'border-box' }}
+                  >
+                    <div className="flex flex-col items-center w-full">
+                      <div className="mb-2">{icon}</div>
+                      <h3 className="text-xl font-semibold mb-1 text-gray-900 mt-2 text-center break-words">{plan.name}</h3>
+                    </div>
+                    <p className="text-gray-500 mb-2 text-base text-center break-words">{plan.duration}</p>
+                    <div className="w-24 h-24 rounded-full bg-white border-4 border-gray-100 flex flex-col items-center justify-center mb-2 shadow">
+                      <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
+                      <span className="text-xs text-gray-500">€/Woche</span>
+                    </div>
+                    {(() => {
+                      let saveUpTo = 0;
+                      if (plan.name === "Dranbleiben") saveUpTo = 22;
+                      if (plan.name === "Sprachflow") saveUpTo = 48;
+                      return saveUpTo > 0 ? (
+                        <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
+                          Spare bis zu {saveUpTo}€
+                        </div>
+                      ) : null;
+                    })()}
+                    <p className="text-gray-600 mb-6 text-base min-h-[48px] text-center break-words px-2">{plan.description}</p>
+                    <button className="mt-auto w-[90%] py-2 mb-4 rounded-lg border-2 border-current text-base font-semibold text-gray-900 bg-white transition-colors duration-200 group-hover:bg-orange-500 group-hover:text-white hover:bg-orange-500 hover:text-white">
+                      Auswählen
+                    </button>
+                  </motion.div>
+                </CarouselItem>
+              );
+            })}
+          </CarouselContent>
+        </Carousel>
+      </div>
+      {/* Desktop flex row */}
+      <div className="hidden md:flex flex-row gap-6 w-full mb-16 overflow-x-auto justify-center min-h-[420px]">
         {plans.slice(1).map((plan, index) => {
           // Icons for savings level (from 1 to 4)
           const savingsIcons = [
@@ -176,6 +229,10 @@ const Pricing = () => (
             <svg key="4" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="2" fill="none" /><circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2" fill="none" /><path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" /></svg>
           ];
           const icon = savingsIcons[index % savingsIcons.length];
+          // Adjust savings for Dranbleiben
+          let saveUpTo = 0;
+          if (plan.name === "Dranbleiben") saveUpTo = 22;
+          if (plan.name === "Sprachflow") saveUpTo = 48;
           return (
             <motion.div
               key={plan.name}
@@ -199,9 +256,8 @@ const Pricing = () => (
               {/* Savings below price */}
               {(() => {
                 let saveUpTo = 0;
-                if (plan.name === "Dranbleiben") saveUpTo = 14;
-                if (plan.name === "Sprachflow") saveUpTo = 33;
-                if (plan.name === "Sprachexpert:in") saveUpTo = 48;
+                if (plan.name === "Dranbleiben") saveUpTo = 22;
+                if (plan.name === "Sprachflow") saveUpTo = 48;
                 return saveUpTo > 0 ? (
                   <div className="mb-2 inline-block bg-green-600 text-white text-xs font-bold rounded-full px-3 py-1 shadow z-10">
                     Spare bis zu {saveUpTo}€

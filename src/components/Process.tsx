@@ -1,238 +1,98 @@
-
-import { Send, HelpCircle, MessageSquare, Calendar, Download } from 'lucide-react';
+import { HelpCircle, UserCheck, MessageSquare, Calendar, Clock, ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+const faqs = [
+	{
+		icon: <HelpCircle className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+		question: 'Wie melde ich mich für die Community an?',
+		answer: 'Du kannst dich ganz einfach über Telegram, Instagram oder WhatsApp bei Aliona melden. Sobald du dich entschieden hast mitzumachen, erhältst du Zugang zum Telegram-Kanal, in dem alle Inhalte, Aufgaben und Infos geteilt werden.',
+	},
+	{
+		icon: <UserCheck className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+		question: 'Muss ich täglich aktiv sein?',
+		answer: 'Für den besten Lernerfolg empfehlen wir eine tägliche Teilnahme – aber es ist keine Pflicht. Du kannst in deinem eigenen Tempo mitmachen und dich einbringen, wann es dir passt. Am Wochenende gibt es keine neuen Aufgaben, und das Team ist eventuell nicht sofort erreichbar. Du hast aber weiterhin Zugriff auf alle Inhalte und kannst dich jederzeit mit anderen Teilnehmenden im Chat austauschen.',
+	},
+	{
+		icon: <MessageSquare className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+		question: 'Wie funktionieren die Sprachklubs?',
+		answer: 'Die Sprachklubs finden einmal pro Woche über Zoom statt. Dort besprechen wir das Wochenthema, üben freies Sprechen und wenden den Wortschatz aus den täglichen Aufgaben praktisch an.',
+	},
+	{
+		icon: <Calendar className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+		question: 'Nicht ganz B1 – kann ich trotzdem dabei sein?',
+		answer: 'Unsere Community richtet sich an Lernende ab etwa B1-Niveau. Aber das ist keine feste Grenze – es kommt auch auf deine Erfahrung und Motivation an. Einige Teilnehmer:innen mit niedrigerem Niveau haben sehr gute Fortschritte gemacht. Du kannst gerne eine Probewoche buchen und selbst herausfinden, ob es für dich passt.',
+	},
+	{
+		icon: <Clock className="w-8 h-8 text-orange-500 flex-shrink-0 mt-1" />,
+		question: 'Wie viel Zeit brauche ich pro Tag für die Aufgaben?',
+		answer: 'Das hängt von deinem Sprachniveau und deiner Routine ab – im Durchschnitt brauchst du etwa 15–30 Minuten täglich. Wenn du möchtest, kannst du dich auch darüber hinaus mit anderen im Chat austauschen und noch mehr üben.',
+	},
+];
 
 const Process = () => {
-  const days = [
-    {
-      day: "Montag",
-      activities: [
-        { time: "09:00", title: "Wort des Tages", description: "Ein neues Wort mit Beispielsätzen und Übungen." },
-        { time: "15:00", title: "Grammatikübung", description: "Kurze, fokussierte Übung zu einem Grammatikthema." }
-      ]
-    },
-    {
-      day: "Dienstag",
-      activities: [
-        { time: "09:00", title: "Sprachimpuls", description: "Ein Ausdruck oder eine Redewendung für Alltagssituationen." },
-        { time: "15:00", title: "Hörverständnis", description: "Kurze Audioaufnahme mit Verständnisfragen." }
-      ]
-    },
-    {
-      day: "Mittwoch",
-      activities: [
-        { time: "09:00", title: "Leseverständnis", description: "Kurzer Text mit Fragen und Diskussion." },
-        { time: "19:00", title: "Sprachklub", description: "Gemeinsame Konversationsrunde über Zoom." }
-      ]
-    },
-    {
-      day: "Donnerstag",
-      activities: [
-        { time: "09:00", title: "Kulturtipp", description: "Interessante Fakten über deutschsprachige Länder." },
-        { time: "15:00", title: "Sprechübung", description: "Aufgabe zum Sprechen mit Feedback." }
-      ]
-    },
-    {
-      day: "Freitag",
-      activities: [
-        { time: "09:00", title: "Wochenrückblick", description: "Zusammenfassung der Wocheninhalte." },
-        { time: "15:00", title: "Freie Diskussion", description: "Offene Gesprächsrunde zu einem aktuellen Thema." }
-      ]
-    }
-  ];
+	const [openIndex, setOpenIndex] = useState<number | null>(null);
+	const boxVariants = {
+		hidden: { opacity: 0, y: 20 },
+		visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+	};
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
-  const faqs = [
-    {
-      question: "Wie melde ich mich für die Community an?",
-      answer: "Du kannst dich einfach über Telegram, Instagram oder WhatsApp bei Aliona melden. Nach einem kurzen Gespräch erhältst du einen Einladungslink zur Telegram-Gruppe."
-    },
-    {
-      question: "Muss ich täglich aktiv sein?",
-      answer: "Für den besten Lernerfolg empfehlen wir tägliche Teilnahme, aber es ist keine Pflicht. Du kannst in deinem eigenen Tempo teilnehmen und dich einbringen, wann es dir passt."
-    },
-    {
-      question: "Wie funktionieren die Sprachklubs?",
-      answer: "Die Sprachklubs finden jeden Mittwoch über Zoom statt. Wir besprechen verschiedene Themen, üben das freie Sprechen und geben einander Feedback. Die Teilnahme ist freiwillig aber sehr empfehlenswert."
-    },
-    {
-      question: "Ich bin noch nicht auf B1-Niveau. Kann ich trotzdem teilnehmen?",
-      answer: "Die Community ist auf Lernende ab B1-Niveau ausgerichtet. Wenn du noch nicht ganz B1 erreicht hast, kontaktiere uns für alternative Lernmöglichkeiten."
-    },
-    {
-      question: "Gibt es eine Mindestvertragsdauer?",
-      answer: "Wir bieten verschiedene Mitgliedschaftsoptionen an, beginnend mit einem kostenlosen Probeabo. Du kannst flexibel zwischen 4, 8 oder 12 Wochen wählen."
-    }
-  ];
-
-  return (
-    <section id="process" className="section">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="section-title">Wie funktioniert es?</h2>
-          <p className="section-subtitle">
-            Unsere Community basiert auf täglichen Aktivitäten, die deine Deutschkenntnisse kontinuierlich verbessern.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-5 gap-6 mb-16">
-          <div className="lg:col-span-3">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="bg-white rounded-xl shadow-md p-6 md:p-8"
-            >
-              <h3 className="text-2xl font-semibold mb-6">Tagesablauf in der Community</h3>
-              
-              <Tabs defaultValue="montag" className="w-full">
-                <TabsList className="grid grid-cols-5 mb-6">
-                  {days.map(day => (
-                    <TabsTrigger key={day.day} value={day.day.toLowerCase()}>
-                      {day.day}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-                
-                {days.map(day => (
-                  <TabsContent key={day.day} value={day.day.toLowerCase()} className="space-y-4">
-                    <h4 className="text-xl font-medium text-blue-dark">{day.day}</h4>
-                    {day.activities.map((activity, index) => (
-                      <motion.div 
-                        key={index}
-                        variants={itemVariants}
-                        className="timeline-item"
-                      >
-                        <span className="font-medium text-blue-dark">{activity.time}</span>
-                        <h5 className="text-lg font-medium mt-1">{activity.title}</h5>
-                        <p className="text-gray-600 mt-1">{activity.description}</p>
-                      </motion.div>
-                    ))}
-                  </TabsContent>
-                ))}
-              </Tabs>
-            </motion.div>
-          </div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-2 bg-white rounded-xl shadow-md p-6 md:p-8"
-          >
-            <div className="flex items-center mb-6">
-              <Send size={28} className="text-[#0088cc] mr-3" />
-              <h3 className="text-2xl font-semibold">Telegram als Plattform</h3>
-            </div>
-            
-            <p className="text-gray-600 mb-6">
-              Unsere Community nutzt Telegram für die tägliche Kommunikation und Lernaktivitäten. 
-              Diese Plattform bietet uns alle nötigen Funktionen für einen reibungslosen Ablauf 
-              und eine einfache Organisation.
-            </p>
-            
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-pastel-blue rounded-full flex items-center justify-center mr-3 mt-1">
-                  <span className="text-blue-dark font-medium">1</span>
-                </div>
-                <div>
-                  <h4 className="font-medium">Installiere Telegram</h4>
-                  <p className="text-gray-600 text-sm">Verfügbar für alle Geräte</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-pastel-blue rounded-full flex items-center justify-center mr-3 mt-1">
-                  <span className="text-blue-dark font-medium">2</span>
-                </div>
-                <div>
-                  <h4 className="font-medium">Kontaktiere Aliona</h4>
-                  <p className="text-gray-600 text-sm">Für Zugang zur Community</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="flex-shrink-0 w-8 h-8 bg-pastel-blue rounded-full flex items-center justify-center mr-3 mt-1">
-                  <span className="text-blue-dark font-medium">3</span>
-                </div>
-                <div>
-                  <h4 className="font-medium">Tritt der Gruppe bei</h4>
-                  <p className="text-gray-600 text-sm">Über den Einladungslink</p>
-                </div>
-              </div>
-            </div>
-            
-            <a 
-              href="https://telegram.org/dl" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-[#0088cc] hover:bg-[#0099E6] text-white py-3 px-4 rounded-lg transition-all duration-300"
-            >
-              <Download size={20} />
-              <span>Telegram herunterladen</span>
-            </a>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto"
-        >
-          <div className="flex items-center justify-center mb-8">
-            <HelpCircle size={28} className="text-blue-dark mr-3" />
-            <h3 className="text-2xl font-semibold">Häufig gestellte Fragen</h3>
-          </div>
-          
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition-shadow"
-              >
-                <h4 className="text-lg font-medium mb-2">{faq.question}</h4>
-                <p className="text-gray-600">{faq.answer}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
+	return (
+		<section id="process" className="section bg-gradient-to-b from-white to-pastel-lila/30">
+			<div className="container">
+				<motion.h2
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, amount: 0.2 }}
+					variants={boxVariants}
+					className="section-title mb-10 text-3xl sm:text-4xl font-bold text-center"
+				>
+					Häufig gestellte Fragen
+				</motion.h2>
+				<div className="grid gap-4 max-w-3xl mx-auto">
+					{faqs.map((faq, idx) => (
+						<motion.div
+							key={faq.question}
+							initial="hidden"
+							whileInView="visible"
+							viewport={{ once: true, amount: 0.2 }}
+							variants={boxVariants}
+							className="bg-white rounded-2xl shadow flex flex-col"
+						>
+							<button
+								className="flex items-center justify-between gap-4 p-6 focus:outline-none w-full"
+								onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+								aria-expanded={openIndex === idx}
+								aria-controls={`faq-box-${idx}`}
+							>
+								<span className="flex items-center gap-3">
+									{faq.icon}
+									<span className="text-lg font-semibold">{faq.question}</span>
+								</span>
+								{openIndex === idx ? (
+									<ChevronUp className="w-6 h-6 text-orange-500" />
+								) : (
+									<ChevronDown className="w-6 h-6 text-orange-500" />
+								)}
+							</button>
+							{openIndex === idx && (
+								<div
+									id={`faq-box-${idx}`}
+									className={`px-6 pb-6 -mt-2${
+										faq.question === 'Ich bin noch nicht auf einem hohen Niveau. Kann ich trotzdem teilnehmen?'
+											? ' text-left'
+											: ''
+									}`}
+								>
+									<p>{faq.answer}</p>
+								</div>
+							)}
+						</motion.div>
+					))}
+				</div>
+			</div>
+		</section>
+	);
 };
 
 export default Process;
