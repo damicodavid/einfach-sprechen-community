@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/einfach-sprechen-community/', // replace with your actual GitHub repo name if different
+  base: '/',
   plugins: [
     react(),
     mode === 'development' &&
